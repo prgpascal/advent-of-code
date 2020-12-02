@@ -11,7 +11,7 @@ def read_file_lines(filename):
             if not line:
                 break
 
-            line_tuple = tuple(x for x in line.split())
+            line_tuple = tuple(line.split())
             lines.append(line_tuple)
 
     return lines
