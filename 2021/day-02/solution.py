@@ -41,6 +41,4 @@ def write_output(output_1, output_2):
     print(output_1, output_2)
 
 input = read_input()
-output_1 = solve_1(input)
-output_2 = solve_2(input)
-write_output(output_1, output_2)
+write_output(solve_1(input), solve_2(input))
