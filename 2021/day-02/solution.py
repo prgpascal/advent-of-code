@@ -4,8 +4,7 @@ def read_input():
     with open(os.path.join(os.path.dirname(__file__), "input.txt")) as file:
         input = []    
         for line in file:
-            line = line.strip()
-            command, value = line.split(" ")
+            command, value = line.strip().split(" ")
             input.append((command, int(value)))
     return input
 
