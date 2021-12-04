@@ -23,9 +23,10 @@ def solve_2(input):
 
 
 def write_output(output_1, output_2):
+    output = f"{output_1}\n{output_2}"
+    print(output)
     with open(os.path.join(os.path.dirname(__file__), "output.txt"), "w") as file:
-        file.write(f"{output_1}\n{output_2}")
-    print(output_1, output_2)
+        file.write(output)
 
 
 input = read_input()
