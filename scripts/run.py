@@ -10,13 +10,15 @@ TIME_THRESHOLD = 1000
 ROOT_DIR = "."
 
 arg_parser = argparse.ArgumentParser()
+arg_parser.add_argument("year", type=str, help="Selected year", nargs="?", default="**")
+arg_parser.add_argument("day", type=str, help="Selected day", nargs="?", default="**")
 arg_parser.add_argument("--year", type=str, help="Selected year", default="**")
 arg_parser.add_argument("--day", type=str, help="Selected day", default="**")
-arg_parser.add_argument("--watch", action="store_true", help="Run in watch mode")
+arg_parser.add_argument("--w", action="store_true", help="Run in watch mode")
 args = arg_parser.parse_args()
 year = args.year
 day = args.day
-watch = args.watch
+watch = args.w
 
 input_files = [f for f in glob.glob(f"{ROOT_DIR}/*{year}*/*{day}*/*.py")]
 input_files.sort()
