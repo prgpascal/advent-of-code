@@ -6,6 +6,8 @@ authors = ["prgpascal <leschiutta.ricc@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+watchdog = "^2.1.6"
+argparse = "^1.4.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
