@@ -35,6 +35,7 @@ def run_files():
             print()
     else:
         print("No files found")
+    print("Done.")
 
 
 def on_file_change(event):
