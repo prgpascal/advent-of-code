@@ -3,8 +3,7 @@ import os
 
 def read_input():
     with open(os.path.join(os.path.dirname(__file__), "input.txt")) as file:
-        for line in file:
-            return [int(x) for x in line.strip().split(",")]
+        return [int(x) for x in file.readline().strip().split(",")]
 
 
 def solve_for_day(input, day):
