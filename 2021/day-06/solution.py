@@ -12,7 +12,7 @@ def solve_for_day(input, day):
     for fish in fishes_list:
         fishes_per_timer[fish] += 1
 
-    for _ in range(0, day):
+    for _ in range(day):
         number_of_new_fishes = fishes_per_timer[0]
         for index in range(1, 9):
             fishes_per_timer[index - 1] = fishes_per_timer[index]

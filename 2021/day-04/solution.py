@@ -28,7 +28,7 @@ def read_input():
 def create_board(board_values):
     rows_set = [set(row) for row in board_values]
     columns_set = []
-    for i in range(0, 5):
+    for i in range(5):
         columns_set.append(set(row[i] for row in board_values))
 
     return Board(rows_set, columns_set)

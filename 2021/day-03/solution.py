@@ -11,7 +11,7 @@ def read_input():
 def solve_1(input):
     gamma_rate_array = []
 
-    for i in range(0, len(input[0])):
+    for i in range(len(input[0])):
         count = Counter(line[i] for line in input)
         gamma_rate_array.append(count.most_common(1)[0][0])
 
@@ -23,7 +23,7 @@ def solve_2(input):
     oxygen_generator_array = input.copy()
     co2_scrubber_array = input.copy()
 
-    for i in range(0, len(input[0])):
+    for i in range(len(input[0])):
         if len(oxygen_generator_array) > 1:
             count = Counter(line[i] for line in oxygen_generator_array)
             bit = "1" if count["1"] >= count["0"] else "0"
