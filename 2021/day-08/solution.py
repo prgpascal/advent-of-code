@@ -1,8 +1,8 @@
 import os
 from collections import defaultdict
 
-
-UNIQUE_SEGMENTS_LENGTH = {
+# { length: signal }
+UNIQUE_SIGNAL_LENGTHS = {
     3: 7,
     4: 4,
     2: 1,
@@ -24,66 +24,36 @@ def solve_1(input):
     for line in input:
         output_value = line[1]
         for value in output_value:
-            if len(value) in UNIQUE_SEGMENTS_LENGTH:
+            if len(value) in UNIQUE_SIGNAL_LENGTHS:
                 counter += 1
     return counter
 
 
-def find_segments_configuration(signal_patterns):
+def find_configuration(signal_patterns):
     found = defaultdict(set)
-    to_remove = []
 
-    # segments with unique lenghts
+    # pre-load signals with unique lenghts
     for signal in signal_patterns:
-        k = UNIQUE_SEGMENTS_LENGTH.get(len(signal))
-        if k is not None:
-            found[k] = set(signal)
-            to_remove.append(signal)
-    for s in to_remove:
-        signal_patterns.remove(s)
+        signal_length = len(signal)
+        signal_set = set(signal)
+        if signal_length in UNIQUE_SIGNAL_LENGTHS:
+            found[UNIQUE_SIGNAL_LENGTHS[signal_length]] = signal_set
 
-    # find 9
-    for s in signal_patterns:
-        if len(s) == 6 and len((set(s).union(found[4]))) == 6:
-            found[9] = set(s)
-            to_remove = s
-            break
-    signal_patterns.remove(to_remove)
-
-    # find 6
-    for s in signal_patterns:
-        if len(s) == 6 and len((set(s).union(found[1]))) == 7:
-            found[6] = set(s)
-            to_remove = s
-            break
-    signal_patterns.remove(to_remove)
-
-    # find 0
-    for s in signal_patterns:
-        if len(s) == 6:
-            found[0] = set(s)
-            to_remove = s
-            break
-    signal_patterns.remove(to_remove)
-
-    # find 3
-    for s in signal_patterns:
-        if len(set(s).difference(found[1])) == 3:
-            found[3] = set(s)
-            to_remove = s
-            break
-    signal_patterns.remove(to_remove)
-
-    # find 5
-    for s in signal_patterns:
-        if len(set(s).difference(found[4])) == 2:
-            found[5] = set(s)
-            to_remove = s
-            break
-    signal_patterns.remove(to_remove)
-
-    # last one is 2
-    found[2] = set(signal_patterns[0])
+    for signal in signal_patterns:
+        signal_length = len(signal)
+        signal_set = set(signal)
+        if signal_length == 6 and len(signal_set.union(found[4])) == 6:
+            found[9] = signal_set
+        elif signal_length == 6 and len(signal_set.union(found[1])) == 7:
+            found[6] = signal_set
+        elif signal_length == 6:
+            found[0] = signal_set
+        elif signal_length == 5 and len(signal_set.difference(found[1])) == 3:
+            found[3] = signal_set
+        elif signal_length == 5 and len(signal_set.difference(found[4])) == 2:
+            found[5] = signal_set
+        elif signal_length == 5:
+            found[2] = signal_set
 
     return found
 
@@ -93,7 +63,7 @@ def solve_2(input):
 
     for line in input:
         signal_patterns, output_values = line
-        config = find_segments_configuration(signal_patterns)
+        config = find_configuration(signal_patterns)
         response = []
         for out in output_values:
             response += [str(k) for k, v in config.items() if set(v) == set(out)]
