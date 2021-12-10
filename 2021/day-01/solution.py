@@ -1,5 +1,6 @@
 import os
 from collections import deque
+from utils.io import write_output
 
 
 def read_input():
@@ -32,12 +33,5 @@ def solve_2(input):
     return counter
 
 
-def write_output(output_1, output_2):
-    output = f"{output_1}\n{output_2}"
-    print(output)
-    with open(os.path.join(os.path.dirname(__file__), "output.txt"), "w") as file:
-        file.write(output)
-
-
 input = read_input()
-write_output(solve_1(input), solve_2(input))
+write_output(os.path.dirname(__file__), solve_1(input), solve_2(input))
