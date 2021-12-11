@@ -33,5 +33,4 @@ def solve_2(input):
     return counter
 
 
-input = read_input()
-write_output(os.path.dirname(__file__), solve_1(input), solve_2(input))
+write_output(solve_1(read_input()), solve_2(read_input()))

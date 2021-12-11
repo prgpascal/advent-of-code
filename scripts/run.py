@@ -35,7 +35,7 @@ def run_files():
             print()
     else:
         print("No files found")
-    print("Done.")
+    print(f"Done ({len(input_files)} files)")
 
 
 def on_file_change(event):
@@ -49,7 +49,7 @@ if __name__ == "__main__":
     print(args, "\n")
     run_files()
     if watch:
-        patterns = ["*.py"]
+        patterns = ["*.py", "input.txt"]
         ignore_patterns = ["*run.py*"]
         ignore_directories = False
         case_sensitive = True
