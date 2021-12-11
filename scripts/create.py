@@ -8,8 +8,8 @@ arg_parser = argparse.ArgumentParser()
 arg_parser.add_argument("year", type=str, help="Selected year")
 arg_parser.add_argument("day", type=str, help="Selected day")
 args = arg_parser.parse_args()
-year = args.year
-day = args.day
+year = f"year_{args.year}"
+day = f"day_{args.day}" if len(args.day) > 1 else f"day_0{args.day}"
 
 
 def create_dir(parent_dir, dir_name):
@@ -35,7 +35,7 @@ def generate():
     root_path = Path(os.getcwd())
 
     year_dir = create_dir(root_path, year)
-    day_dir = create_dir(year_dir, f"day-{day}" if len(day) > 1 else f"day-0{day}")
+    day_dir = create_dir(year_dir, day)
 
     teplate_input_file = os.path.join(root_path, "utils", "template.py")
     template_output_file = os.path.join(str(day_dir), "solution.py")
