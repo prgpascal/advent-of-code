@@ -15,13 +15,14 @@ def read_input():
     return input
 
 
-def solve_1(input):
+def solve_1():
+    input = read_input()
     return input
 
 
-def solve_2(input):
+def solve_2():
+    input = read_input()
     return input
 
 
-input = read_input()
-write_output(os.path.dirname(__file__), solve_1(input), solve_2(input))
+write_output(solve_1(), solve_2())
