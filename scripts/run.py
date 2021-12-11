@@ -28,14 +28,19 @@ run_times = [current_time()]
 
 
 def run_files():
+    total_files = len(input_files)
+    executed_files = 0
     if len(input_files) > 0:
         for file in input_files:
             print(f"Running {file}")
-            system(f"python {file}")
+            error = system(f"python {file}")
             print()
+            if error:
+                break
+            executed_files += 1
     else:
         print("No files found")
-    print(f"Done ({len(input_files)} files)")
+    print(f"Done ({executed_files}/{total_files} files)")
 
 
 def on_file_change(event):
