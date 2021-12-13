@@ -11,9 +11,9 @@ My solutions to the challanges of the [Advent of Code](https://adventofcode.com)
 - `poetry install`
 
 ### Create a solution
-Type `python scripts / create.py [year] [day]` to generate a new directory with a template that will help you work on your solution.
+Type `python scripts/create.py [year] [day]` to generate a new directory with a template that will help you work on your solution.
 
-Example: `python scripts/create.py 2021 10`.
+Example: `python scripts/create.py 2021 10`
 
 Params:
 | name | type | mandatory | why? | 
@@ -32,15 +32,15 @@ Params:
 |---|---|---|---|---|
 | year | number | no | ** | It indicates the year. If not provided, all the years will be considered |  
 | day | number | no | ** | It indicates the day. If not provided, all the days will be considered| 
-| --w | bool | no | False | When True, it will be executed in `watch` mode, and it will run the solution(s) after each save | 
+| --w | bool | no | False | When `True`, it will be executed in `watch` mode, and the solution(s) will run after each save | 
 
 ### Analyze your solution efficiency
 Inside `utils/analysis` a `clock()` decorator is available to be applied to one or more of the solution's functions. The following optional parameters are accepted:
 
 | name | type | mandatory | default | why? | 
 |---|---|---|---|--|
-| print_input | bool | False | False | When True, the input params are printed near the decorated function |  
-| print_output | bool | False | False | When False, the output params are printed near the decorated function | 
+| print_input | bool | False | False | When `True`, the input params are printed near the decorated function |  
+| print_output | bool | False | False | When `False`, the output params are printed near the decorated function | 
   
 Example:
 ```python
