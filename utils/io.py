@@ -16,3 +16,7 @@ def print_matrix(matrix):
     for row in matrix:
         print(row)
     print()
+
+
+def create_matrix(rows, columns, char=" "):
+    return [[char for _ in range(columns)] for _ in range(rows)]
