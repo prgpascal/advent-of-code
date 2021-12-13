@@ -11,7 +11,7 @@ My solutions to the challanges of the [Advent of Code](https://adventofcode.com)
 - `poetry install`
 
 ### Create a solution
-Type `python scripts/create.py [year] [day]` to generate a new directory with a template that will help you work on your solution.
+Type `python scripts/create.py [year] [day]` to generate a new directory with a useful starter template.
 
 Example: `python scripts/create.py 2021 10`
 
