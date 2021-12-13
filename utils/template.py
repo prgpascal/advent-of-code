@@ -2,6 +2,7 @@ import os
 import re
 from collections import Counter, deque
 from functools import reduce
+from utils.analysis import clock
 from utils.io import create_matrix, write_output
 
 
