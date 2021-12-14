@@ -1,5 +1,6 @@
 import os
 from collections import Counter
+from utils.io import write_output
 
 
 def read_input():
@@ -8,7 +9,8 @@ def read_input():
     return input
 
 
-def solve_1(input):
+def solve_1():
+    input = read_input()
     gamma_rate_array = []
 
     for i in range(len(input[0])):
@@ -19,7 +21,8 @@ def solve_1(input):
     return int("".join(gamma_rate_array), 2) * int("".join(epsilon_rate_array), 2)
 
 
-def solve_2(input):
+def solve_2():
+    input = read_input()
     oxygen_generator_array = input.copy()
     co2_scrubber_array = input.copy()
 
@@ -37,12 +40,4 @@ def solve_2(input):
     return int("".join(oxygen_generator_array), 2) * int("".join(co2_scrubber_array), 2)
 
 
-def write_output(output_1, output_2):
-    output = f"{output_1}\n{output_2}"
-    print(output)
-    with open(os.path.join(os.path.dirname(__file__), "output.txt"), "w") as file:
-        file.write(output)
-
-
-input = read_input()
-write_output(solve_1(input), solve_2(input))
+write_output(solve_1(), solve_2())

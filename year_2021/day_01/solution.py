@@ -9,7 +9,8 @@ def read_input():
     return input
 
 
-def solve_1(input):
+def solve_1():
+    input = read_input()
     previous = input[0]
     counter = 0
     for current in input:
@@ -19,7 +20,8 @@ def solve_1(input):
     return counter
 
 
-def solve_2(input):
+def solve_2():
+    input = read_input()
     window = deque(maxlen=3)
     previous_sum = sum(input[0:3])
     counter = 0
@@ -33,4 +35,4 @@ def solve_2(input):
     return counter
 
 
-write_output(solve_1(read_input()), solve_2(read_input()))
+write_output(solve_1(), solve_2())

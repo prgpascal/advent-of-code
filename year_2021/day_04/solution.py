@@ -1,8 +1,8 @@
 from collections import namedtuple
 import os
+from utils.io import write_output
 
 Board = namedtuple("Board", ["rows_set", "columns_set"])
-Input = namedtuple("Input", ["numbers", "boards"])
 
 
 def read_input():
@@ -22,7 +22,7 @@ def read_input():
                 current_board.append([int(x) for x in line.split(" ") if x != ""])
         tmp_boards.append(current_board)
 
-    return Input(numbers, [create_board(b) for b in tmp_boards])
+    return (numbers, [create_board(b) for b in tmp_boards])
 
 
 def create_board(board_values):
@@ -58,8 +58,8 @@ def compute_solution(winning_board, winning_number):
     return sum(all_numbers_in_board) * winning_number
 
 
-def solve_1(input: Input):
-    numbers, boards = input
+def solve_1():
+    numbers, boards = read_input()
     for number in numbers:
         for board in boards:
             apply_new_number_to_board(board, number)
@@ -67,8 +67,8 @@ def solve_1(input: Input):
                 return compute_solution(board, number)
 
 
-def solve_2(input):
-    numbers, boards = input
+def solve_2():
+    numbers, boards = read_input()
     all_winning_boards = []
     to_remove = []
 
@@ -84,12 +84,4 @@ def solve_2(input):
     return compute_solution(all_winning_boards[-1][0], all_winning_boards[-1][1])
 
 
-def write_output(output_1, output_2):
-    output = f"{output_1}\n{output_2}"
-    print(output)
-    with open(os.path.join(os.path.dirname(__file__), "output.txt"), "w") as file:
-        file.write(output)
-
-
-input = read_input()
-write_output(solve_1(input), solve_2(input))
+write_output(solve_1(), solve_2())
