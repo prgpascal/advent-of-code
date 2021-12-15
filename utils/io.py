@@ -12,9 +12,10 @@ def write_output(output_1, output_2):
         file.write(output)
 
 
-def print_matrix(matrix):
+def print_matrix(matrix, as_string=False):
     for row in matrix:
-        print(row)
+        x = row if not as_string else ''.join([str(x) for x in row])
+        print(x)
     print()
 
 
