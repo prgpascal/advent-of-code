@@ -16,21 +16,40 @@ def read_input():
 
 def solve_1():
     polymer_template, rules = read_input()
-    resulting_list = polymer_template
+
     for _ in range(10):
-        tmp_list = []
-        for i in range(len(resulting_list)):
-            tmp_list.append(resulting_list[i])
-            if i < len(resulting_list) - 1:
-                pair = "".join(resulting_list[i : i + 2])
-                tmp_list.append(rules[pair])
-        resulting_list = tmp_list
-    order = Counter(resulting_list).most_common()
-    return order[0][1] - order[-1][1]
+        expanded = []
+        for i in range(len(polymer_template)):
+            expanded.append(polymer_template[i])
+            if i < len(polymer_template) - 1:
+                pair = "".join(polymer_template[i : i + 2])
+                expanded.append(rules[pair])
+        polymer_template = expanded
+
+    ordered = Counter(polymer_template).most_common()
+    return ordered[0][1] - ordered[-1][1]
 
 
 def solve_2():
-    return ""
+    polymer_template, rules = read_input()
+    pairs_frequency = {k: 0 for k in rules.keys()}
+    char_counter = Counter(polymer_template)
+
+    for i in range(len(polymer_template) - 1):
+        pair = "".join(polymer_template[i : i + 2])
+        pairs_frequency[pair] += 1
+
+    for i in range(40):
+        for pair, frequence in pairs_frequency.copy().items():
+            if frequence > 0:
+                new_char = rules[pair]
+                pairs_frequency[f"{pair[0]}{new_char}"] += frequence
+                pairs_frequency[f"{new_char}{pair[1]}"] += frequence
+                pairs_frequency[pair] -= frequence
+                char_counter[new_char] += frequence
+
+    ordered = char_counter.most_common()
+    return ordered[0][1] - ordered[-1][1]
 
 
 write_output(solve_1(), solve_2())
