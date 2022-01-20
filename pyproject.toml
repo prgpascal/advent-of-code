@@ -3,11 +3,15 @@ name = "advent-of-code"
 version = "1.0.0"
 description = "Memories of Advent of Code"
 authors = ["prgpascal <leschiutta.ricc@gmail.com>"]
+packages = [
+    { include = "utils" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 watchdog = "^2.1.6"
 argparse = "^1.4.0"
+print-tree2 = "^0.9.10"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
