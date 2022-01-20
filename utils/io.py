@@ -1,5 +1,21 @@
 import os
 import inspect
+from print_tree import print_tree
+
+
+class print_binary_tree(print_tree):
+    def get_children(self, node):
+        l_child = node.left_node
+        r_child = node.right_node
+        if r_child is None and l_child is None:
+            return []
+        else:
+            l_child = l_child or "None"
+            r_child = r_child or "None"
+            return [r_child, l_child]
+
+    def get_node_str(self, node):
+        return str(node)
 
 
 def write_output(output_1, output_2):
@@ -14,7 +30,7 @@ def write_output(output_1, output_2):
 
 def print_matrix(matrix, as_string=False):
     for row in matrix:
-        x = row if not as_string else ''.join([str(x) for x in row])
+        x = row if not as_string else "".join([str(x) for x in row])
         print(x)
     print()
 
