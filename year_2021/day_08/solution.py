@@ -1,5 +1,6 @@
 import os
 from collections import defaultdict
+from utils.io import write_output
 
 # { length: signal }
 UNIQUE_SIGNAL_LENGTHS = {
@@ -19,7 +20,8 @@ def read_input():
     return input
 
 
-def solve_1(input):
+def solve_1():
+    input = read_input()
     counter = 0
     for line in input:
         output_value = line[1]
@@ -58,7 +60,8 @@ def find_configuration(signal_patterns):
     return found
 
 
-def solve_2(input):
+def solve_2():
+    input = read_input()
     all_results = []
 
     for line in input:
@@ -72,12 +75,4 @@ def solve_2(input):
     return sum(all_results)
 
 
-def write_output(output_1, output_2):
-    output = f"{output_1}\n{output_2}"
-    print(output)
-    with open(os.path.join(os.path.dirname(__file__), "output.txt"), "w") as file:
-        file.write(output)
-
-
-input = read_input()
-write_output(solve_1(input), solve_2(input))
+write_output(solve_1(), solve_2())

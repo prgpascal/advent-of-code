@@ -1,4 +1,5 @@
 import os
+from utils.io import write_output
 
 
 def read_input():
@@ -122,13 +123,6 @@ def solve_2():
             first_synchronized_flash = step
 
     return first_synchronized_flash
-
-
-def write_output(output_1, output_2):
-    output = f"{output_1}\n{output_2}"
-    print(output)
-    with open(os.path.join(os.path.dirname(__file__), "output.txt"), "w") as file:
-        file.write(output)
 
 
 write_output(solve_1(), solve_2())

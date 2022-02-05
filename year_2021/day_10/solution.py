@@ -1,6 +1,7 @@
 import os
 from functools import reduce
 import bisect
+from utils.io import write_output
 
 OPENING_CHARS_DICT = {"(": ")", "[": "]", "{": "}", "<": ">"}
 CLOSING_CHARS_DICT = {")": "(", "]": "[", "}": "{", ">": "<"}
@@ -57,13 +58,6 @@ def solve_2(input, corrupted_lines):
         )
 
     return scores[int(len(scores) / 2)]
-
-
-def write_output(output_1, output_2):
-    output = f"{output_1}\n{output_2}"
-    print(output)
-    with open(os.path.join(os.path.dirname(__file__), "output.txt"), "w") as file:
-        file.write(output)
 
 
 input = read_input()

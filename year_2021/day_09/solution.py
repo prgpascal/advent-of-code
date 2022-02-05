@@ -1,6 +1,7 @@
 import math
 import os
 from functools import reduce
+from utils.io import write_output
 
 
 def read_input():
@@ -8,7 +9,6 @@ def read_input():
     with open(os.path.join(os.path.dirname(__file__), "input.txt")) as file:
         for line in file:
             matrix.append([int(x) for x in list(line.strip())])
-
     return matrix
 
 
@@ -49,14 +49,16 @@ def find_basin(x, y, matrix, found):
     find_basin(x, y + 1, matrix, found)
 
 
-def solve_1(matrix):
+def solve_1():
+    matrix = read_input()
     low_points = find_low_points(matrix)
     low_points_sum = reduce(lambda accumulator, x: accumulator + x[0], low_points, 0)
 
     return low_points_sum + len(low_points)
 
 
-def solve_2(matrix):
+def solve_2():
+    matrix = read_input()
     low_points = find_low_points(matrix)
     basins = []
     for point in low_points:
@@ -67,12 +69,4 @@ def solve_2(matrix):
     return math.prod(sorted(basins)[-3:])
 
 
-def write_output(output_1, output_2):
-    output = f"{output_1}\n{output_2}"
-    print(output)
-    with open(os.path.join(os.path.dirname(__file__), "output.txt"), "w") as file:
-        file.write(output)
-
-
-input = read_input()
-write_output(solve_1(input), solve_2(input))
+write_output(solve_1(), solve_2())

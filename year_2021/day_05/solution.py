@@ -1,6 +1,7 @@
 import os
 from collections import Counter
 import re
+from utils.io import write_output
 
 INPUT_REGEX = r"(\d+),(\d+) -> (\d+),(\d+)"
 
@@ -48,7 +49,8 @@ def is_diagonal_increasing(start_point, end_point):
     return start_point[1] < end_point[1]
 
 
-def solve_1(input):
+def solve_1():
+    input = read_input()
     count = Counter()
 
     for line in input:
@@ -62,7 +64,8 @@ def solve_1(input):
     return len([x for x in count.items() if x[1] >= 2])
 
 
-def solve_2(input):
+def solve_2():
+    input = read_input()
     count = Counter()
 
     for line in input:
@@ -87,12 +90,4 @@ def solve_2(input):
     return len([x for x in count.items() if x[1] >= 2])
 
 
-def write_output(output_1, output_2):
-    output = f"{output_1}\n{output_2}"
-    print(output)
-    with open(os.path.join(os.path.dirname(__file__), "output.txt"), "w") as file:
-        file.write(output)
-
-
-input = read_input()
-write_output(solve_1(input), solve_2(input))
+write_output(solve_1(), solve_2())
