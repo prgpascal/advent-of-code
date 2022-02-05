@@ -1,38 +1,30 @@
 import os
-from utils.analysis import clock
-from utils.io import create_matrix, print_matrix, write_output
+from utils.io import write_output
 
 
 def read_input():
-    line_number = 0
     horizontal_items_positions = []
     vertical_items_positions = []
     width = 0
+    height = 0
     with open(os.path.join(os.path.dirname(__file__), "input.txt")) as file:
         for line in file:
             line = line.strip()
             width = len(line)
             for i, item in enumerate(line):
-                position = (line_number, i)
+                position = (height, i)
                 if item == ">":
                     horizontal_items_positions.append(position)
                 elif item == "v":
                     vertical_items_positions.append(position)
-            line_number += 1
-    return (horizontal_items_positions, vertical_items_positions, width, line_number)
-
-
-def pretty_print(matrix_dict, width, height):
-    matrix = create_matrix(height, width, char=".")
-    for x, y in matrix_dict.items():
-        matrix[x[0]][x[1]] = y
-    print_matrix(matrix, as_string=True)
+            height += 1
+    return (horizontal_items_positions, vertical_items_positions, width, height)
 
 
 def move_items(items_positions, matrix_dict, is_horizontal, limit):
     new_items = []
-    new_dict = matrix_dict.copy()  # TODO: avoid copy
-    has_moved = False
+    new_matrix_dict = matrix_dict.copy()
+    moved = False
 
     for position in items_positions:
         new_position = (
@@ -43,15 +35,14 @@ def move_items(items_positions, matrix_dict, is_horizontal, limit):
         if new_position in matrix_dict:
             new_items.append(position)
         else:
-            has_moved = True
+            moved = True
             new_items.append(new_position)
-            new_dict.pop(position)
-            new_dict[new_position] = ">" if is_horizontal else "v"
+            new_matrix_dict.pop(position)
+            new_matrix_dict[new_position] = ">" if is_horizontal else "v"
 
-    return (new_items, new_dict, has_moved)
+    return (new_items, new_matrix_dict, moved)
 
 
-@clock()
 def solve_1():
     horizontal_items_positions, vertical_items_positions, width, height = read_input()
     matrix_dict = dict()
@@ -62,6 +53,7 @@ def solve_1():
 
     iteration_number = 0
     while True:
+        iteration_number += 1
         horizontal_items_positions, matrix_dict, has_moved_h = move_items(
             horizontal_items_positions, matrix_dict, True, width
         )
@@ -72,13 +64,11 @@ def solve_1():
         if not has_moved_h and not has_moved_v:
             break
 
-        iteration_number += 1
-
-    return iteration_number + 1
+    return iteration_number
 
 
 def solve_2():
-    input = read_input()
+    # There is no part 2 for day 25
     return ""
 
 
