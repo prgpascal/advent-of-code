@@ -5,6 +5,8 @@ from collections import namedtuple
 from utils.io import write_output
 
 # Solved with the help of the Reddit community. This exercise was so challenging (>_<)"
+# Credit:
+# - https://topaz.github.io/paste/#XQAAAQDTBAAAAAAAAAAxnUhop0JRHqF7STMJ21b5rjzfpDJwgkC8Ju0TgQ6JC3kWm9UKWfjP+KPMGQ04ShwJz/XAH/ZDwwkLtPIVaIWX+xHCdFYDdj1AbGvdpkhagrBjAbxncP3KGQMw6x8dN+Fhc9XmNKkwlmXQMk14LaklWNpRO0LfDVwdlp1eXQxgvKedpeidchA0tcLwSC0HpyC6e61EWmfMXh6+HjYND61l/Zob5BfKrhOnNG0tj1kCEPdw4ML5NoR7GFmmASpjpjTHsD0jpExCpkNwjo02kn30u2dqA8d/jwAD3klLDt8uRF3WF1Duwkx16yJXSgLXgwjd2mO78KtKpVg3jSsuH3V7tVViHugCdExntqSfnzg89R51oGqiZ6heNtDPOUq0APaBYNoXkoBz8T7IOxVdFm5FevG+tnCTFopLiOEfUVCC9duFZGETAD+qxVDXoO1xjDtqRogyvR6dcU5xWSPVie1kd/i9YRUvdWtnnBzB11gKjRG0NRfWAnYFn1ooX7tKxzAN83bGz+KGKPX5bDdae5Dru/gQKXMV8zPicitXIbIOXrTJP0VV4azJ9xHQN9qEAguMjvBfYn9g5gg5VdQMgK+p1WLDCp2okwUq6A11igItQMttxNnVZWqh0czTTiQlvj3Jj/EBr6mpxzMdlbzhrWNHGE+0r7rIzVF2ejBC0rfkUS19kMKf2gRVXKDsru+pGAryhRSCGM97mtgHANmcNzILv9A6TNcVcjR/fdTEs9UFtB/ghWy4pf6Bv2twvyVkVIYsSvK4JCFlmuL2f7+YDjBqzm17Cv/zjG6g
 
 INPUT_REGEX = r"(on|off) x=(-?\d+)..(-?\d+),y=(-?\d+)..(-?\d+),z=(-?\d+)..(-?\d+)"
 VALID_RANGE = range(-50, 51)
