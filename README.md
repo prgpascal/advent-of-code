@@ -1,7 +1,10 @@
 # advent-of-code
+![Python version](https://img.shields.io/badge/python-3.10-blue)
+
 My solutions to the challanges of the [Advent of Code](https://adventofcode.com) 🎅🎄💻
-- [2020](https://adventofcode.com/2020)
+- [2022](https://adventofcode.com/2022)
 - [2021](https://adventofcode.com/2021)
+- [2020](https://adventofcode.com/2020)
 
 ## How to
 
