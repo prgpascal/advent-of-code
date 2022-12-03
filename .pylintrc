@@ -1,0 +1,2 @@
+[MESSAGES CONTROL]
+disable=redefined-builtin,missing-function-docstring,missing-module-docstring,redefined-outer-name,unspecified-encoding
