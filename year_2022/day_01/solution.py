@@ -8,7 +8,7 @@ def read_input():
     with open(os.path.join(os.path.dirname(__file__), "input.txt")) as file:
         for line in file:
             line = line.strip()
-            if line == '':
+            if line == "":
                 groups.append(current_group)
                 current_group = []
             else:
