@@ -13,19 +13,18 @@ def read_input():
             line = line.strip()
 
         # all lines
-        input = [line.strip() for line in file.readlines()]
+        return [line.strip() for line in file.readlines()]
 
     return input
 
 
-def solve_1():
-    input = read_input()
+def solve_1(input):
     return input
 
 
-def solve_2():
-    input = read_input()
+def solve_2(input):
     return input
 
 
-write_output(solve_1(), solve_2())
+input = read_input()
+write_output(solve_1(input), solve_2(input))
