@@ -13,21 +13,19 @@ def read_input():
                 current_group = []
             else:
                 current_group.append(int(line))
-        if len(current_group) > 0:
-            groups.append(current_group)
+    groups.append(current_group)
     return groups
 
 
-def solve_1():
-    groups = read_input()
-    sums = [sum(group) for group in groups]
+def solve_1(input):
+    sums = [sum(group) for group in input]
     return max(sums)
 
 
-def solve_2():
-    groups = read_input()
-    sums = sorted([sum(group) for group in groups])
+def solve_2(input):
+    sums = sorted([sum(group) for group in input])
     return sum(sums[-3:])
 
 
-write_output(solve_1(), solve_2())
+input = read_input()
+write_output(solve_1(input), solve_2(input))

@@ -8,7 +8,7 @@ def read_input():
 
 
 def calculate_priority(item: str):
-    return ord(item) - 96 if item.islower() else ord(item) - 38
+    return ord(item) - (96 if item.islower() else 38)
 
 
 def solve_1(input):

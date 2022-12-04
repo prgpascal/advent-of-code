@@ -26,39 +26,28 @@ def read_input():
 
 def calculate_outcome(round):
     if SCORES[round.opponent] == SCORES[round.me]:
-        # draw
-        return 3
-
+        return 3  # draw
     if SCORES[round.me] == (SCORES[round.opponent] + 1) % 3:
-        # I win
-        return 6
-
+        return 6  # I win
     return 0  # I lose
 
 
-def solve_1():
-    input = read_input()
-    result = 0
-    for round in input:
-        result += SCORES[round.me] + 1 + calculate_outcome(round)
-    return result
+def solve_1(input):
+    scores = [SCORES[round.me] + 1 + calculate_outcome(round) for round in input]
+    return sum(scores)
 
 
-def solve_2():
-    input = read_input()
+def solve_2(input):
     result = 0
     for round in input:
         if round.me == "X":
-            # I lose
-            result += 0 + 1 + (SCORES[round.opponent] - 1) % 3
+            result += 0 + 1 + (SCORES[round.opponent] - 1) % 3  # I lose
         elif round.me == "Y":
-            # draw
-            result += 3 + 1 + SCORES[round.opponent]
+            result += 3 + 1 + SCORES[round.opponent]  # draw
         else:
-            # I win
-            result += 6 + 1 + (SCORES[round.opponent] + 1) % 3
-
+            result += 6 + 1 + (SCORES[round.opponent] + 1) % 3  # I win
     return result
 
 
-write_output(solve_1(), solve_2())
+input = read_input()
+write_output(solve_1(input), solve_2(input))
