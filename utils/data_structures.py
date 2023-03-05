@@ -1,3 +1,6 @@
+from collections import namedtuple
+
+
 class TreeNode:
     def __init__(
         self,
@@ -18,3 +21,7 @@ class TreeNode:
             return str(self.value)
         else:
             return f"[{self.left_node},{self.right_node}]"
+
+
+_point_fields = ("x", "y", "z")
+Point = namedtuple("Point", _point_fields, defaults=(None,) * len(_point_fields))

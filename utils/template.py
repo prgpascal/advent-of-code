@@ -1,8 +1,10 @@
 import os
 import re
-from collections import Counter, deque
+from collections import Counter, deque, namedtuple, defaultdict
+from dataclasses import dataclass
 from functools import reduce
 from utils.analysis import clock
+from utils.data_structures import Point
 from utils.io import create_matrix, write_output
 
 
@@ -13,19 +15,18 @@ def read_input():
             line = line.strip()
 
         # all lines
-        input = [line.strip() for line in file.readlines()]
+        return [line.strip() for line in file.readlines()]
 
     return input
 
 
-def solve_1():
-    input = read_input()
+def solve_1(input):
     return input
 
 
-def solve_2():
-    input = read_input()
-    return input
+def solve_2(input):
+    return "??"
 
 
-write_output(solve_1(), solve_2())
+input = read_input()
+write_output(solve_1(input), solve_2(input))
