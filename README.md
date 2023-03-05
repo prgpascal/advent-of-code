@@ -6,6 +6,8 @@ My solutions to the challanges of the [Advent of Code](https://adventofcode.com)
 - [2021](https://adventofcode.com/2021)
 - [2020](https://adventofcode.com/2020)
 
+![progress](./progress.png)
+
 ## How to
 
 ### Install the project
