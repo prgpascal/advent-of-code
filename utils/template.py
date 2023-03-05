@@ -1,8 +1,10 @@
 import os
 import re
-from collections import Counter, deque
+from collections import Counter, deque, namedtuple, defaultdict
+from dataclasses import dataclass
 from functools import reduce
 from utils.analysis import clock
+from utils.data_structures import Point
 from utils.io import create_matrix, write_output
 
 
@@ -23,7 +25,7 @@ def solve_1(input):
 
 
 def solve_2(input):
-    return input
+    return "??"
 
 
 input = read_input()

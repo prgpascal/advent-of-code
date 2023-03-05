@@ -22,10 +22,14 @@ def create_dir(parent_dir, dir_name):
     return directory
 
 
+def print_file_exists_error(filename):
+    print(f"ERROR: file '{filename}' already exists")
+
+
 def create_empty_file(parent_dir, filename):
     file = os.path.join(parent_dir, filename)
     if exists(file):
-        print("The file already exists")
+        print_file_exists_error(filename)
     else:
         with open(os.path.join(parent_dir, filename), "w"):
             pass
@@ -38,12 +42,15 @@ def generate():
     day_dir = create_dir(year_dir, day)
 
     teplate_input_file = os.path.join(root_path, "utils", "template.py")
-    template_output_file = os.path.join(str(day_dir), "solution.py")
-    copyfile(teplate_input_file, template_output_file)
-    create_empty_file(day_dir, "input.txt")
-    create_empty_file(day_dir, "output.txt")
-
-    print("DONE. Good luck!")
+    output_filename = "solution.py"
+    template_output_file = os.path.join(str(day_dir), output_filename)
+    if exists(template_output_file):
+        print_file_exists_error(output_filename)
+    else:
+        copyfile(teplate_input_file, template_output_file)
+        create_empty_file(day_dir, "input.txt")
+        create_empty_file(day_dir, "output.txt")
+        print("DONE. Good luck!")
 
 
 if __name__ == "__main__":
