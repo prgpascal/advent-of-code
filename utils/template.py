@@ -6,6 +6,7 @@ from functools import reduce
 from utils.analysis import clock
 from utils.data_structures import Point
 from utils.io import create_matrix, write_output
+from math import prod
 
 
 def read_input():
