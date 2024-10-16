@@ -1,4 +1,5 @@
-from collections import namedtuple
+from dataclasses import dataclass
+from typing import Optional
 
 
 class TreeNode:
@@ -23,5 +24,23 @@ class TreeNode:
             return f"[{self.left_node},{self.right_node}]"
 
 
-_point_fields = ("x", "y", "z")
-Point = namedtuple("Point", _point_fields, defaults=(None,) * len(_point_fields))
+@dataclass(unsafe_hash=True)
+class Point:
+    x: int
+    y: int
+    z: Optional[int] = None
+
+    def __lt__(self, other):
+        if self.z is None and other.z is None:
+            return self.x < other.x or self.y < other.y
+        return self.x < other.x or self.y < other.y or self.z < other.z
+
+    def __str__(self):
+        if self.z is None:
+            return f"({self.x}, {self.y})"
+        return f"({self.x}, {self.y}, {self.z})"
+
+    def __iter__(self):
+        if self.z is None:
+            return iter((self.x, self.y))
+        return iter((self.x, self.y, self.z))
