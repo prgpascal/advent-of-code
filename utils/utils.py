@@ -1,5 +1,7 @@
 from math import inf
 from utils.data_structures import Point
+from math import gcd
+import time
 
 INFINITY = inf
 
@@ -27,6 +29,14 @@ def sum_tuples(t1, t2):
     return tuple(sum(t) for t in zip(t1, t2))
 
 
+def sum_points(p1, p2):
+    return Point(
+        p1.x + p2.x,
+        p1.y + p2.y,
+        p1.z + p2.z,
+    )
+
+
 def tuple_to_point(t) -> Point:
     x = y = z = 0
     if len(t) > 0:
@@ -38,5 +48,38 @@ def tuple_to_point(t) -> Point:
     return Point(x, y, z)
 
 
+def hex_to_int(hex: str):
+    return int(hex, 16)
+
+
+def calculate_polygon_area(vertices: list[Point]):
+    """Calculate the area of a polygon given its vertices (using the Shoelace formula)"""
+    area = 0
+    for i in range(len(vertices) - 1):
+        x1, y1 = vertices[i].x, vertices[i].y
+        x2, y2 = vertices[i + 1].x, vertices[i + 1].y
+        area += x1 * y2 - x2 * y1
+    return abs(area) // 2
+
+
 def calculate_manhattan_distance(point_1: Point, point_2: Point):
-    return abs(point_1[0] - point_2[0]) + abs(point_1[1] - point_2[1])
+    """Calculate the manhattan distance between two points (2D plane)"""
+    return abs(point_1.x - point_2.x) + abs(point_1.y - point_2.y)
+
+
+def calculate_lcm(numbers: list[int]):
+    """Calculate the "least common multiple" of a list of numbers"""
+    lcm = 1
+    for n in numbers:
+        lcm = lcm * n // gcd(lcm, n)
+    return lcm
+
+
+def hamming_distance(s1: str, s2: str):
+    """Calculate the hamming distance between two strings with the same length"""
+    assert len(s1) == len(s2)
+    return sum(1 for c1, c2 in zip(s1, s2) if c1 != c2)
+
+
+def get_current_time_millis():
+    return round(time.time() * 1000)

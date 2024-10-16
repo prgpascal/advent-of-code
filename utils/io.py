@@ -37,3 +37,7 @@ def print_matrix(matrix, as_string=False):
 
 def create_matrix(rows, columns, char=" "):
     return [[char for _ in range(columns)] for _ in range(rows)]
+
+
+def get_matrix_column(matrix, j):
+    return "".join([row[j] for row in matrix])

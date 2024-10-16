@@ -2,15 +2,15 @@ import os
 from collections import defaultdict
 from utils.data_structures import Point
 from utils.io import write_output
-from utils.utils import sum_tuples, tuple_to_point
+from utils.utils import sum_points
 
 adjacent_deltas = [
-    (1, 0, 0),
-    (0, 1, 0),
-    (0, 0, 1),
-    (-1, 0, 0),
-    (0, -1, 0),
-    (0, 0, -1),
+    Point(1, 0, 0),
+    Point(0, 1, 0),
+    Point(0, 0, 1),
+    Point(-1, 0, 0),
+    Point(0, -1, 0),
+    Point(0, 0, -1),
 ]
 
 
@@ -79,7 +79,7 @@ def is_internal_cube(cube, cubes_repo: CubesRepository, internal_cubes_seen: set
 
     # check if adjacent cubes are internal as well
     for adj in adjacent_deltas:
-        adjacent = tuple_to_point(sum_tuples(cube, adj))
+        adjacent = sum_points(cube, adj)
         if adjacent not in cubes_repo.all_cubes and adjacent not in internal_cubes_seen:
             is_internal = is_internal_cube(adjacent, cubes_repo, internal_cubes_seen)
             if not is_internal:
@@ -93,7 +93,7 @@ def solve_1(cubes_repo: CubesRepository):
     for cube in cubes_repo.all_cubes:
         faces = 6
         for adj in adjacent_deltas:
-            adjacent = sum_tuples(cube, adj)
+            adjacent = sum_points(cube, adj)
             if adjacent in cubes_repo.all_cubes:
                 # adjacent cube found
                 faces -= 1
@@ -107,7 +107,7 @@ def solve_2(cubes_repo):
     for cube in input.all_cubes:
         faces = 6
         for adj in adjacent_deltas:
-            adjacent = tuple_to_point(sum_tuples(cube, adj))
+            adjacent = sum_points(cube, adj)
             if adjacent in input.all_cubes:
                 # adjacent cube found
                 faces -= 1
